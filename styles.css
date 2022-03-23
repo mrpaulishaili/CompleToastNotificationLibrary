@@ -1,0 +1,80 @@
+/* Toast  */
+.toast {
+  position: relative;
+  box-sizing: border-box;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+  overflow: hidden;
+}
+
+/* Toast container */
+.toast-container {
+  position: fixed;
+  margin: 0.5rem;
+  width: 250px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Toast close button */
+.toast.can-close::after {
+  position: absolute;
+  content: "\00O7";
+  top: 2px;
+  right: 5px;
+}
+
+/* Toast progress */
+.toast.progress::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2px;
+  width: calc(100% * var(--progress, 0.5));
+  background-color: blueviolet;
+}
+
+/* Toast Animations */
+.toast-container[data-position$="-right"] .toast {
+  transform: translateX(110%);
+}
+.toast-container[data-position$="-left"] .toast {
+  transform: translateX(-110%);
+}
+.toast-container[data-position$="-center"] .toast {
+  transform: translateY(-110%);
+}
+.toast-container .toast.show {
+  transform: translate(0, 0);
+}
+
+/* Toast container positions */
+.toast-container[data-position^="top-"] {
+  top: 0;
+}
+
+.toast-container[data-position^="bottom-"] {
+  bottom: 0;
+}
+
+.toast-container[data-position$="-left"] {
+  left: 0;
+}
+
+.toast-container[data-position$="-right"] {
+  right: 0;
+}
+
+.toast-container[data-position$="-center"] {
+  left: 50%;
+  transform: translateX(-50%);
+}
